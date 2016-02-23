@@ -6,9 +6,13 @@
 -->
 <ion-view view-title="{{chat.name}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lastText}} proutrifveonv
-    </p>
+    <ion-item ng-repeat="message in messages | orderBy:'sentDate' ">
+      <img ng-src="{{message.face}}" style="width: 64px; height: 64px">
+      <p>le {{message.sentDate | date:'MM/dd/yyyy @ h:mma'}}</p>
+      <p>
+        {{message.message}}
+      </p>
+    </ion-item>
+    <input type="text" placeholder="écrire un message..."/>
   </ion-content>
 </ion-view>

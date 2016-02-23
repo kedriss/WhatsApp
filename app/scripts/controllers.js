@@ -12,20 +12,17 @@ angular.module('starter.controllers', [])
     //
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-  console.log("dans le chat controleur");
+    console.log("dans le chat controleur");
     $scope.chats = Chats.all();
     $scope.remove = function (chat) {
       Chats.remove(chat);
     };
   })
 
-  .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats) {
+  .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats,Messages) {
     $scope.chat = Chats.get($stateParams.chatId);
-  })
-  .controller('ContactsCtrl', function ($scope, Contacts) {
-    $scope.model = {truc: "yo"};
-    $scope.contacts = Contacts.all();
-    console.log("dans le controleur de contacts");
+    $scope.messages = Messages.get($stateParams.chatId);
+
   })
 
   .controller('ContactDetailCtrl', function ($scope, $stateParams, Contacts) {

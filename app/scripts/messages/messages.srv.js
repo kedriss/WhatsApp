@@ -33,14 +33,15 @@ console.log("chats service");
         messages.splice(messages.indexOf(message), 1);
       },
       get: function(messageId) {
+        var retour=[];
         console.log('dans le get(i) de message  Service');
         for (var i = 0; i < messages.length; i++) {
           console.log(messages[i]);
           if (messages[i]._id === messageId) {
-            return messages[i];
+            retour.push(messages[i]);
           }
         }
-        return null;
+        return retour;
       }
     };
   });
