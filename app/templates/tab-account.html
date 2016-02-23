@@ -1,0 +1,19 @@
+<ion-view view-title="Contacts">
+  <ion-content>
+    <ion-list>
+      <ion-toggle ng-model="settings.enableFriends">
+        Enable Friends
+      </ion-toggle>
+
+      <input ng-model="filter.name" placeholder="Filter">
+
+      <ion-item ng-repeat="contact in contacts | filter:{firstName:filter.name} | orderBy: 'firstName'"
+                class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap"
+                href="#/tab/contacts/{{contact._id}}">
+        <img ng-src="{{contact.face}}"/>
+
+        <p>{{contact.firstName}} {{contact.lastName}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
