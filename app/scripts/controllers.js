@@ -19,12 +19,6 @@ angular.module('starter.controllers', [])
     };
   })
 
-  .controller('ChatDetailCtrl', function ($scope, $stateParams, Chats,Messages) {
-    $scope.chat = Chats.get($stateParams.chatId);
-    $scope.messages = Messages.get($stateParams.chatId);
-
-  })
-
   .controller('ContactDetailCtrl', function ($scope, $stateParams, Contacts) {
     $scope.contact = Contacts.get($stateParams.contactId);
     console.log("dans le controleur de contact detail");

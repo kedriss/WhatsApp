@@ -25,6 +25,9 @@ console.log("chats service");
     ];
 
     return {
+      add:function(message){
+        messages.push(message);
+      },
       all: function() {
         console.log("dans le all de messages");
         return messages;

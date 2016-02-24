@@ -3,43 +3,46 @@
  */
 angular.module('starter.contactServices', [])
 
-  .factory('Contacts', function() {
+  .factory('Contacts', function () {
     // Might use a resource here that returns a JSON array
-console.log("contacts service");
+    console.log("contacts service");
     // Some fake testing data
-    var contacts   = [
-     {
-          "_id": "12345",
-          "email": "gros@minet.com",
-            "firstName": "Gros",
-            "lastName": "minet",
-            "face": 'images/max.png'
-          },
+    var contacts = [
+      {
+        "_id": "12345",
+        "email": "gros@minet.com",
+        "firstName": "Gros",
+        "lastName": "minet",
+        "face": 'images/max.png',
+        "password":"gros"
+      },
       {
         "_id": "54321",
         "email": "titi@piaf.com",
         "firstName": "Titi",
         "lastName": "piaf",
-        face: 'images/ben.png'
+        face: 'images/ben.png',
+        password:"piou"
       },
       {
         "_id": "11122",
         "email": "Grany@vioc.com",
         "firstName": "grany",
         "lastName": "vioc",
-        face: 'images/perry.png'
+        face: 'images/perry.png',
+        password:"vioc"
       }
 
     ];
 
     return {
-      all: function() {
+      all: function () {
         return contacts;
       },
-      remove: function(contact) {
+      remove: function (contact) {
         contacts.splice(contacts.indexOf(contact), 1);
       },
-      get: function(contactId) {
+      get: function (contactId) {
         console.log('dans le get(i) de contactService');
         for (var i = 0; i < contacts.length; i++) {
           console.log(contacts[i]);
@@ -48,6 +51,14 @@ console.log("contacts service");
           }
         }
         return null;
+      },
+
+      getByMail: function (mail) {
+        for (var i = 0; i < contacts.length; i++) {
+          if (contacts[i].email === mail) {
+            return contacts[i];
+          }
+        }
       }
     };
   });
