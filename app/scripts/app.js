@@ -5,14 +5,18 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
 angular.module('starter',
-  ['ionic', 'starter.controllers','starter.contactServices',
-    'starter.chatsServices','starter.messagesServices','starter.rightsServices','LocalStorageModule','checklist-model'])
-  .config(['localStorageServiceProvider', function(localStorageServiceProvider){
+  ['ionic', 'starter.controllers', 'starter.contactServices',
+    'starter.chatsServices', 'starter.messagesServices', 'starter.rightsServices', 'LocalStorageModule', 'checklist-model', 'angularMoment'])
+  .config(['localStorageServiceProvider', function (localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('ls');
-  }])
-  .run(function($ionicPlatform) {
-    $ionicPlatform.ready(function() {
+  }]).constant('angularMomentConfig', {
+  preprocess: 'utc',
+  timezone: "Greenwich"
+})
+  .run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -27,7 +31,7 @@ angular.module('starter',
     });
   })
 
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router

@@ -26,10 +26,10 @@
       <ion-toggle ng-model="newChat.private">
         Privée
       </ion-toggle>
-      <ion-list>
+      <ion-list ng-if="newChat.private">
       <ion-scroll>
         <ion-item ng-repeat=" contact in contacts">
-          <ion-checkbox checklist-model='newRight'  checklist-value="contact._id"> {{contact.firstName}} {{contact.lastName}}</ion-checkbox>
+          <ion-checkbox checklist-model='newRight'  checklist-value="contact._id" ng-checked="contact._id==connected._id" ng-disabled="contact._id==connected._id"> {{contact.firstName}} {{contact.lastName}}</ion-checkbox>
         </ion-item>
       </ion-scroll>
       </ion-list>

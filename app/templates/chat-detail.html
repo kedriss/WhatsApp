@@ -9,7 +9,8 @@
     <ion-item ng-repeat="message in messages | orderBy:'sentDate' ">
       <img ng-src="{{message.face}}" style="width: 64px; height: 64px">
 
-      <p>le {{message.sentDate | date:'MM/dd/yyyy @ h:mma'}}</p>
+       <time am-time-ago="message.sentDate"></time>
+
 
       <p>
         {{message.message}}

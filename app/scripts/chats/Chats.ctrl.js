@@ -40,11 +40,17 @@ angular.module('starter.controllers')
         var chat = $scope.newChat;
         chat.creationDate = new Date().toISOString();
         var idChat = Chats.addChat(chat);
-        var right={};
-        for(var i = 0; i<$scope.newRight.length;i++){
-          right[$scope.newRight[i]]=true;
+
+        if($scope.newChat.private) {
+          var right = {};
+          right[$scope.connected._id]=true; // forcement l'utilisateur connecté fait parti de la conversation qu'il crée
+          for (var i = 0; i < $scope.newRight.length; i++) {
+            right[$scope.newRight[i]] = true;
+          }
+
+          Rights.addRight(idChat, right);
+
         }
-        Rights.addRight(idChat,right);
         refreshChat();
       }
     }
@@ -53,7 +59,7 @@ angular.module('starter.controllers')
     var checkNewChat = function () {
       var newChat = $scope.newChat;
 
-      return newChat.name && newChat.description;
+      return newChat.name && newChat.description && ($scope.newRight.length>0 || !$scope.newChat.private);
     }
 
     refreshChat();
