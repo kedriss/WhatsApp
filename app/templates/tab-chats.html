@@ -1,9 +1,13 @@
 <ion-view view-title="Chats">
   <ion-content>
+    <button class="ion-android-add" ng-click="createFormChat()"></button>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats |orderBy :'_id'" type="item-text-wrap" href="#/tab/chats/{{chat._id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats |orderBy :'_id'"
+                type="item-text-wrap" href="#/tab/chats/{{chat._id}}">
         <img ng-src="images/conv.jpg">
+
         <h2>{{chat.name}}</h2>
+
         <p>{{chat.lastText}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
@@ -13,5 +17,23 @@
       </ion-item>
     </ion-list>
 
+
+    <div ng-if="createChat.show">
+      <label class="item item-input">
+        <input type="text" placeholder="Nom de la conversation" ng-model="newChat.name"/></label>
+      <label class="item item-input">
+        <input type="text" placeholder="Description" ng-model="newChat.description"/></label>
+      <ion-toggle ng-model="newChat.private">
+        Privée
+      </ion-toggle>
+      <ion-list>
+      <ion-scroll>
+        <ion-item ng-repeat=" contact in contacts">
+          <ion-checkbox checklist-model='newRight'  checklist-value="contact._id"> {{contact.firstName}} {{contact.lastName}}</ion-checkbox>
+        </ion-item>
+      </ion-scroll>
+      </ion-list>
+      <button class="button button-positive" ng-click="addChat()" value="Go!">Go !</button>
+    </div>
   </ion-content>
 </ion-view>

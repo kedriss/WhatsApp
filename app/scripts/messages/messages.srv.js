@@ -5,7 +5,7 @@ angular.module('starter.messagesServices', [])
 
   .factory('Messages', function() {
     // Might use a resource here that returns a JSON array
-console.log("chats service");
+
     // Some fake testing data
     var messages  = [
 
@@ -29,7 +29,6 @@ console.log("chats service");
         messages.push(message);
       },
       all: function() {
-        console.log("dans le all de messages");
         return messages;
       },
       remove: function(message) {
@@ -37,9 +36,7 @@ console.log("chats service");
       },
       get: function(messageId) {
         var retour=[];
-        console.log('dans le get(i) de message  Service');
         for (var i = 0; i < messages.length; i++) {
-          console.log(messages[i]);
           if (messages[i]._id === messageId) {
             retour.push(messages[i]);
           }

@@ -32,17 +32,33 @@ console.log("chats service");
 
     ];
 
+    var maxId = function(){
+      var Id=0;
+      for(var i=0; i < chats.length; i++){
+        if (parseInt(chats[i]._id) > Id){
+            Id = parseInt(chats[i]._id);
+        }
+      }
+
+      return Id;
+    }
     return {
+
+      addChat:function(chat){
+        //TODO faire des verif sur les données avant
+        chat._id=maxId()+1;
+        chats.push(chat);
+        return chat._id;
+      },
       all: function() {
-        console.log("dans le all de contact");
         return chats;
       },
       remove: function(chat) {
         chats.splice(chats.indexOf(chat), 1);
       },
       get: function(messageId) {
-        console.log('dans le get(i) de chatService');
-        for (var i = 0; i < chats.length; i++) {
+
+         for (var i = 0; i < chats.length; i++) {
           console.log(chats[i]);
           if (chats[i]._id === messageId) {
             return chats[i];

@@ -10,9 +10,6 @@ angular.module('starter.controllers')
       $scope.messages = Messages.get($stateParams.chatId);
 
       for(i=0; i<$scope.messages.length;i++){
-        console.log($scope.messages[i]);
-        console.log("mise a jour image message id= "+$scope.messages[i].senderID);
-        console.log("mise a jour image message "+Contacts.get( $scope.messages[i].senderID).img);
         $scope.messages[i].face= Contacts.get( $scope.messages[i].senderID).face;
 
       }

@@ -5,8 +5,7 @@ angular.module('starter.contactServices', [])
 
   .factory('Contacts', function () {
     // Might use a resource here that returns a JSON array
-    console.log("contacts service");
-    // Some fake testing data
+     // Some fake testing data
     var contacts = [
       {
         "_id": "12345",
@@ -43,9 +42,7 @@ angular.module('starter.contactServices', [])
         contacts.splice(contacts.indexOf(contact), 1);
       },
       get: function (contactId) {
-        console.log('dans le get(i) de contactService');
         for (var i = 0; i < contacts.length; i++) {
-          console.log(contacts[i]);
           if (contacts[i]._id === contactId) {
             return contacts[i];
           }
